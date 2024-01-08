@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  redis:
+    host: websocket-chat-redis.gi9cvl.ng.0001.apn2.cache.amazonaws.com
+    port: 6379
+    max-memory: 256MB
+server:
+  port: 8082

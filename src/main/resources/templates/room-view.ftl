@@ -50,7 +50,7 @@
         },
         methods: {
             findAllRoom: function() {
-                axios.get('/chat/rooms').then(response => { this.chatrooms = response.data; });
+                axios.get('/chat/rooms').then(response => { this.chatrooms = response.data.reverse(); });
             },
             createRoom: function() {
                 if("" === this.room_name) {

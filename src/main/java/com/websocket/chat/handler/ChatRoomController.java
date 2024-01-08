@@ -21,7 +21,7 @@ public class ChatRoomController {
         return "room-view";
     }
 
-    @GetMapping("rooms")
+    @GetMapping("/rooms")
     @ResponseBody
     public List<ChatRoomV2> room() {
         return chatRoomRepository.findAllRoom();
