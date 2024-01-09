@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: prod
   redis:
-    host: pdia-redis-prac.gi9cvl.ng.0001.apn2.cache.amazonaws.com
+    host: pdia-redis-server.gi9cvl.ng.0001.apn2.cache.amazonaws.com
     port: 6379
     max-memory: 256MB
 server:
