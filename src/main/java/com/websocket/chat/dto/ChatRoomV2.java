@@ -11,8 +11,10 @@ import java.util.UUID;
 public class ChatRoomV2 implements Serializable {
 
     private static final long serialVersionUID = 6494678977089006639L;
+
     private String roomId;
     private String name;
+    private long userCount;
 
     public static ChatRoomV2 create(String name) {
         ChatRoomV2 chatRoom = new ChatRoomV2();

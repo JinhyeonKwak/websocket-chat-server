@@ -11,7 +11,7 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 
-@Controller
+//@Controller
 @RequiredArgsConstructor
 public class ChatControllerV2 {
 

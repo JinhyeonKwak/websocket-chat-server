@@ -15,11 +15,11 @@
 <body>
 <div class="container" id="app" v-cloak>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h3>채팅방 리스트</h3>
         </div>
         <div class="col-md-6 text-right">
-            <a href="/logout" class="btn btn-primary btn-sm">로그아웃</a>
+            <a class="btn btn-primary btn-sm" href="/logout">로그아웃</a>
         </div>
     </div>
     <div class="input-group">
@@ -33,7 +33,7 @@
     </div>
     <ul class="list-group">
         <li class="list-group-item list-group-item-action" v-for="item in chatrooms" v-bind:key="item.roomId" v-on:click="enterRoom(item.roomId, item.name)">
-            {{item.name}}
+            <h6>{{item.name}} <span class="badge badge-info badge-pill">{{item.userCount}}</span></h6>
         </li>
     </ul>
 </div>
@@ -53,12 +53,17 @@
         },
         methods: {
             findAllRoom: function() {
-                axios.get('/chat/rooms').then(response => { this.chatrooms = response.data; });
+                axios.get('/chat/rooms').then(response => {
+                    // prevent html, allow json array
+                    if (Object.prototype.toString.call(response.data) === "[object Array]") {
+                        this.chatrooms = response.data;
+
+                    }
+            })
             },
             createRoom: function() {
                 if("" === this.room_name) {
                     alert("방 제목을 입력해 주십시요.");
-                    return;
                 } else {
                     var params = new URLSearchParams();
                     params.append("name",this.room_name);
