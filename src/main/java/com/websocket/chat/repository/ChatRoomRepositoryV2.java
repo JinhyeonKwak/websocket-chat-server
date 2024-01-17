@@ -18,16 +18,16 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ChatRoomRepositoryV2 {
     private static final String CHAT_ROOMS = "CHAT_ROOM";
-    private final RedisMessageListenerContainer redisMessageListener;
-    private final RedisSubscriber redisSubscriber;
+//    private final RedisMessageListenerContainer redisMessageListener;
+//    private final RedisSubscriber redisSubscriber;
     private final RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, String, ChatRoomV2> opsHashChatRoom;
-    private Map<String, ChannelTopic> topics;
+//    private Map<String, ChannelTopic> topics;
 
     @PostConstruct
     private void init() {
         opsHashChatRoom = redisTemplate.opsForHash();
-        topics = new HashMap<>();
+//        topics = new HashMap<>();
     }
 
     public List<ChatRoomV2> findAllRoom() {
@@ -44,16 +44,16 @@ public class ChatRoomRepositoryV2 {
         return chatRoom;
     }
 
-    public void enterChatRoom(String roomId) {
-        ChannelTopic topic = topics.get(roomId);
-        if (topic == null) {
-            topic = new ChannelTopic(roomId);
-            redisMessageListener.addMessageListener(redisSubscriber, topic);
-            topics.put(roomId, topic);
-        }
-    }
+//    public void enterChatRoom(String roomId) {
+//        ChannelTopic topic = topics.get(roomId);
+//        if (topic == null) {
+//            topic = new ChannelTopic(roomId);
+//            redisMessageListener.addMessageListener(redisSubscriber, topic);
+//            topics.put(roomId, topic);
+//        }
+//    }
 
-    public ChannelTopic getTopic(String roomId) {
-        return topics.get(roomId);
-    }
+//    public ChannelTopic getTopic(String roomId) {
+//        return topics.get(roomId);
+//    }
 }
